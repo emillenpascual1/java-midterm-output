@@ -1,0 +1,79 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class term {
+  static ArrayList<String> name = new ArrayList<>();
+  static ArrayList<Integer> age = new ArrayList<>();
+  static Scanner p = new Scanner(System.in);
+
+  public static void main(String[] args)
+   {
+    int option = 0;
+    end:
+    while (true) 
+    {
+      System.out.print(
+          "====Options====\n1 add entry \n2 delete entry \n3 view all entry \n4 update an entry \n0 exit\nSelect Option = ");
+       option = p.nextInt();
+        
+
+      switch (option) {
+        case 1:
+          add();
+          break;
+        case 2:
+          delete();
+          break;
+        case 3:
+          view();
+          break;
+        case 4:
+          update();
+          break;
+        case 0:
+          break end;
+        default:
+          System.out.println("invalid");
+          break;
+      }
+    }
+  }
+
+  static void add()
+   {
+    System.out.println("===Add entry===");
+    System.out.println("enter name:");
+    name.add(p.next());
+    System.out.println("enter age:");
+    age.add(p.nextInt());
+  }
+
+  static void delete() 
+  {
+    System.out.println("===Delete entry===");
+    System.out.print("enter name to delete:");
+    name.remove(p.next());
+  }
+
+  static void view() {
+    System.out.println("===View all entries===");
+    System.out.println("Persons you have entered");
+    for (int i = 0; i < age.size(); i++) 
+    {
+      System.out.println(name.get(i) + " is " + age.get(i));
+    }
+  }
+
+  static void update() 
+  {
+    System.out.println("===Update entry===");
+    System.out.print("Enter index:");
+    int index = p.nextInt();
+    System.out.println("enter new name: ");
+    String neww = p.next();
+    System.out.println("enter new age:");
+    int agees = p.nextInt();
+    name.set(index, neww);
+    age.set(index, agees);
+  }
+}
